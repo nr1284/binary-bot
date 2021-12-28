@@ -20,16 +20,9 @@ const notify = ({ className, message, position = 'left', sound = 'silent' }) => 
 
     $.notify(message.toString(), { position: `bottom ${position}`, className });
     if (sound !== 'silent') {
-        const playPromise = $(`#${sound}`)
+        $(`#${sound}`)
             .get(0)
             .play();
-        if (playPromise !== undefined) {
-            playPromise
-                .then(() => {
-                    sound.pause();
-                })
-                .catch(() => {});
-        }
     }
 };
 
